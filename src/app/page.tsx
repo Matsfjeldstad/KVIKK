@@ -40,14 +40,14 @@ export default function Home() {
   });
 
   return (
-    <main className="flex min-h-screen w-screen gap-20 justify-between p-24 bg-gray-950 text-gray-200">
+    <main className="flex flex-col md:flex-row min-h-screen gap-20 justify-between p-5 md:p-24 bg-gray-950 text-gray-200">
       <div
         className={cn(
           completion ? 'opacity-50' : 'opacity-0',
           'pointer-events-none duration-200 fixed inset-0 z-0 h-full w-screen bg-[radial-gradient(circle_at_left,_#B12E82_10%,_transparent_70%)] ',
         )}
       />
-      <Card className="w-full z-10  h-fit min-h-[40vh] p-4 max-w-xl bg-gray-800 text-slate-300">
+      <Card className="w-full mt-10 md:mt-0 z-10 h-fit min-h-[40vh] max-w-xl bg-gray-800 text-slate-300">
         <CardHeader>
           <CardTitle>Email Generated:</CardTitle>
         </CardHeader>
@@ -78,7 +78,7 @@ export default function Home() {
       <form
         onSubmit={handleSubmit}
         ref={parent}
-        className="flex flex-col gap-4 max-w-3xl w-full relative right-0 p-6 bg-gray-800 rounded-lg"
+        className="flex flex-col gap-4 max-w-3xl w-full relative right-0 p-6 mb-20 bg-gray-800 rounded-lg"
       >
         <label className="flex flex-col w-fit">
           Make a Response?
