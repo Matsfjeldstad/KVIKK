@@ -12,10 +12,10 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
   // Extract the `prompt` from the body of the request
-  const { prompt, context, isResponse, name, language, mood, type } = await req.json();
+  const { prompt, context, isResponse, name, language, mood, type, length } = await req.json();
 
-  const ResponsePrompt = `Write a response to the following email. Please ensure that the response is written in the same language as provided here: ${language}, unless otherwise specified. The tone of the response should be ${mood}. This is a(n) ${type} email. Your name is ${name}. If necessary, please use the following additional context to inform your response: ${context} Email provided: '${prompt}'. format it like an email.`;
-  const NewEmailPromt = `Genrate an email. Please ensure that the email is written in the same language as provided here: ${language}, unless otherwise specified. The tone of the email should be ${mood}. This is a(n) ${type} email. Write the emial in the name of: ${name}. If necessary, please use the following additional context to inform your email: ${prompt}'. format it like an email.`;
+  const ResponsePrompt = `Write a response to the following email. Please ensure that the response is written in the same language as provided here: ${language}, unless otherwise specified.The tone of the response should be ${mood}. This is a(n) ${type} email. The sender of the email is ${name}, so you are making the email in the name of ${name}. If necessary, please use the following additional context to inform your response: ${context} Email provided: '${prompt}'. format it like an email. length should be ${length}.`;
+  const NewEmailPromt = `Genrate an email. Please ensure that the email is written in the same language as provided here: ${language}, unless otherwise specified. The tone of the email should be ${mood}. This is a(n) ${type} email. The sender of the email is ${name}, so you are making the email in the name of ${name}. If necessary, please use the following additional context to inform your email: ${prompt}'. format it like an email. length should be ${length}.`;
   // Ask OpenAI for a streaming completion given the prompt
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
