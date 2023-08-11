@@ -8,7 +8,7 @@ Quickly generate email responses using the power of OpenAI's GPT model.
 
 KVIKK (Norwegian for "Quick") is an email response generator designed to make your life easier. By leveraging the power of the OpenAI GPT model, KVIKK provides you with intelligent, context-aware email responses in a matter of seconds.
 
-Built using the robust and performant Next.js framework, styled with the elegant Tailwind CSS and the added aesthetics of `shadcn/ui`, and deployed seamlessly with Vercel. KVIKK harnesses the Vercel AI SDK to interact smoothly with the GPT model.
+Built using the robust and performant Next.js framework, styled with the elegant Tailwind CSS and the added aesthetics of Shadcn/ui, and deployed seamlessly with Vercel. KVIKK harnesses the Vercel AI SDK to interact smoothly with the GPT model.
 
 ## Prerequisites
 
@@ -64,6 +64,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vercel](https://vercel.com/)
+- [Shadcn/UI](https://ui.shadcn.com/)
 
 ---
 
