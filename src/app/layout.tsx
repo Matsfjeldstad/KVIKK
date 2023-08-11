@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={cn(inter.className, 'bg-gray-950')}>
-        <header className="flex justify-center items-center h-20g text-white">
+        <header className="flex justify-center items-center h-20 text-white">
           <KvikkLogo className="h-4 w-4 fill-white" />
         </header>
         {children}
