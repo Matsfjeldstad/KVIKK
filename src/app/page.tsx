@@ -126,7 +126,7 @@ export default function Home() {
               onChange={(e) => setName(e.target.value)}
             />
           </label>
-          <div className="flex justify-between gap-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-6">
             <label className="w-full">
               Language:
               <Select value={language} onValueChange={(e) => setlanguage(e)}>
@@ -164,7 +164,7 @@ export default function Home() {
               </Select>
             </label>
           </div>
-          <div className="flex justify-between gap-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-6">
             <label className="w-full">
               Email Type:
               <Select value={type} onValueChange={(e) => setType(e)}>
