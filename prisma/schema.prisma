@@ -12,11 +12,15 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
+  emails Email[]
 }
 model Email {
   id    Int     @id @default(autoincrement())
-  user  Int
+  author User?  @relation(fields: [author_id], references: [id])
+  author_id  Int?
   draft Boolean
+  email_text String
+  subject String
   created_at DateTime @default(now())
   last_edited DateTime @default(now())
 }
