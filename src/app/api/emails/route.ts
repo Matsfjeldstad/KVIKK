@@ -12,6 +12,8 @@ import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-    const data = await prisma.email.findMany();
+    const data = await prisma.email.findMany({
+        where: { author_id: 1 },
+    });
     return NextResponse.json(data);
 }

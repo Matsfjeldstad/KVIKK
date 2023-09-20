@@ -19,24 +19,6 @@ export default function InfoCard({ children }: Props) {
         <div className=" w-full p-0.5 h-full rounded-3xl min-h-[400px] bg-gradient-to-b from-gray-700 to-transparent overflow-hidden">
             <div className="relative w-full rounded-3xl h-full min-h-[400px] p-10 bg-[#010821] overflow-hidden">
                 <div className="w-full h-1/2 absolute bottom-0 left-0 bg-gradient-to-b pointer-events-none  from-transparent to-[#010821] z-[15]" />
-                {/* <div className="flex flex-col relative z-10">
-                    <div className="text-2xl font-bold">Title</div>
-                    <div className="text-lg max-w-xs [text-wrap:balance] text-gray-400">
-                        Craft the perfect email with the right tone.
-                    </div>
-                </div>
-                <div className="h-1/2 absolute top-1/2 -right-6 w-[60%] min-w-[300px] flex flex-col gap-2 rounded-lg border bg-gray-100/20 border-gray-500 p-4 z-10">
-                    <div className="p-4 border rounded-md text-sm flex gap-2">
-                        <div className="text-blue-200 flex gap-2 items-center">
-                            <Sparkles className="w-4 h-4 fill-blue-200" />
-                            Tone of Email
-                        </div>
-                        <div>Formal,Angry</div>
-                    </div>
-                    <div className="p-4 border rounded-md text-sm flex gap-2">
-                        <div className="whitespace-pre-line">{string}</div>
-                    </div>
-                </div> */}
                 {children}
             </div>
         </div>
