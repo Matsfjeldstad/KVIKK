@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { KvikkLogo } from "@/assets/Logo";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +20,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={cn(inter.className, "bg-[#010821]")}>
-                <header className="flex justify-center bg-white/[0.0001] backdrop-blur-xl items-center fixed top-0 z-20 w-screen left-0 h-20 text-white">
-                    <KvikkLogo className="h-4 w-4 fill-white" />
-                </header>
+            <body className={cn(inter.className, "bg-[#010821] text-gray-200")}>
+                <Navbar />
+
                 {children}
                 <footer className="w-full min-h-[80vh] pt-20 border-t border-gray-600/50 ">
                     <div className="max-w-6xl mx-auto p-10 ">
