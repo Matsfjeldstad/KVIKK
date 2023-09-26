@@ -3,18 +3,6 @@ import React from "react";
 type Props = {};
 
 export default async function page({}: Props) {
-    async function fetchEmails() {
-        try {
-            const res = await fetch("http://localhost:3000/api/emails");
-            const data = await res.json();
-            return data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const emails = await fetchEmails();
-    console.log(emails);
     const string = `Dear [Landlord],
 
 I am writing to express my frustration about the extremely poor internet connection in my building. As a digitally connected tenant, I depend on the connection to do both work and leisure activities, and I am unable to do either of them due to ongoing problems with the internet.
@@ -40,17 +28,6 @@ I am writing to express my frustration about the extremely poor internet connect
                         >
                             Subject: Rental car at Gardemoen Airport
                         </div>
-                        {emails.map((email) => {
-                            return (
-                                <div
-                                    key={email.id}
-                                    data-active
-                                    className="border-l p-4 cursor-pointer duration-300 hover:bg-gray-400/10 data-[active]:bg-gray-400/10"
-                                >
-                                    {email.subject}
-                                </div>
-                            );
-                        })}
                         {/* <div className="text-gray-500">September 10th 2023</div>
                         <div className="border-l p-4 cursor-pointer duration-300 hover:bg-gray-400/10 data-[active]:bg-gray-400/10">
                             Subject: Rental car at Gardemoen Airport

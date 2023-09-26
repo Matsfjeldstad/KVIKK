@@ -1,19 +1,19 @@
 import { resend } from "@/lib/resend";
 import MagicLinkEmail from "../../emails/MagicLinkEmail";
+import { Interface } from "readline";
 
-type Params = {
+interface SendVerificationRequestParams {
     identifier: string;
     url: string;
-    provider: string;
-    theme: string;
-};
+}
+
 type TextParams = {
     url: string;
     host: string;
 };
 
-export async function sendVerificationRequest(params: Params) {
-    const { identifier, url, provider, theme } = params;
+export async function sendVerificationRequest(params: SendVerificationRequestParams) {
+    const { identifier, url } = params;
     const { host } = new URL(url);
 
     try {
