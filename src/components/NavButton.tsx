@@ -22,9 +22,12 @@ export async function LogedInButton() {
                         alt={"profile avatar of " + session.user.name}
                     />
                 ) : (
-                    <div>{session.user.name![0]} </div>
+                    <div className="w-8 h-8 rounded-full justify-center flex items-center bg-gradient-to-r from-slate-800 to-purple-950">
+                        🚀
+                    </div>
                 )}
-                Hello, {session.user?.name}
+                Hello,{" "}
+                {session.user?.name || session.user?.email?.split("@")[0]}
                 {/* </Button> */}
             </DropDown>
             // <DropdownMenu>
