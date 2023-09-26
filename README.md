@@ -54,6 +54,13 @@ Built using the robust and performant Next.js framework, styled with the elegant
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Matsfjeldstad/KVIKK/issues).
 
+## Road Map
+
+- Add PostgreSQL Database for storrage
+- Add Authentication Using Next-auth.js
+- Add Email Inbox and Draft
+- Make Apealing Landing Page
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
