@@ -1,16 +1,25 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import heroGif from "@/assets/animations/wavyHero.webp";
 import { AiMail } from "@/assets/Icons";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 type Props = {};
 
 export default function HeroBanner({}: Props) {
+    const ref = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["end end", "end start"],
+    });
+
+    const opacity = useTransform(scrollYProgress, [0.2, 0.7], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0.2, 1], [1, 0.8]);
+
     return (
-        <section className="h-screen relative">
-            <div className="absolute h-full w-full bg-gradient-to-b from-[#010A2B] to-gray-950/90 top-0 left-0 z-10" />
+        <section ref={ref} className="h-screen relative">
+            <div className="absolute h-full w-full bg-gradient-to-b from-[#010A2B] to-[#010821e8] top-0 left-0 z-10" />
             <motion.div
                 initial={{
                     opacity: 0.2,
@@ -25,10 +34,14 @@ export default function HeroBanner({}: Props) {
                 <Image
                     src={heroGif}
                     alt="wavy background"
+                    priority
                     className="w-screen h-full absolute inset-0 z-0 object-fill  pointer-events-none "
                 />
             </motion.div>
-            <div className="h-full max-w-3xl mx-auto relative z-10 text-center w-full flex gap-6 justify-center items-center flex-col p-6 text-white">
+            <motion.div
+                style={{ opacity, scale }}
+                className="h-full max-w-3xl mx-auto relative z-10 text-center w-full flex gap-6 justify-center items-center flex-col p-6 text-white"
+            >
                 <motion.div
                     initial={{
                         scale: 2,
@@ -74,8 +87,8 @@ export default function HeroBanner({}: Props) {
                     }}
                     className="text-2xl [text-wrap:balance] text-gray-400 leading-normal"
                 >
-                    The AI-powered email response generator
-                    that makes your life easier.
+                    The AI-powered email response generator that makes your life
+                    easier.
                 </motion.p>
                 <motion.button
                     initial={{
@@ -93,7 +106,7 @@ export default function HeroBanner({}: Props) {
                 >
                     Go to app
                 </motion.button>
-            </div>
+            </motion.div>
         </section>
     );
 }
