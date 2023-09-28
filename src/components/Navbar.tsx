@@ -8,7 +8,7 @@ type Props = {};
 
 export default function Navbar({}: Props) {
     return (
-        <header className=" p-10 bg-white/[0.0001] backdrop-blur-xl  fixed top-0 z-20 w-screen left-0 h-20 text-white ">
+        <header className=" p-10 bg-[#010821]/[0.30] backdrop-blur-xl  fixed top-0 z-20 w-screen left-0 h-20 text-white ">
             <div className="w-full h-full max-w-7xl mx-auto flex items-center justify-between">
                 <KvikkLogo className="h-20 fill-white" />
                 <div className="flex gap-10">
