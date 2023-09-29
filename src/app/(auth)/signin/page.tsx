@@ -53,7 +53,7 @@ export default async function SignInPage({}: Props) {
                     </div>
                     <div className="flex gap-2">
                         Dont have an account yet?
-                        <Link href="/signin" className="underline">
+                        <Link href="/auth/registrer" className="underline">
                             {" "}
                             Sign up here!
                         </Link>

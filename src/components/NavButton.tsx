@@ -38,7 +38,7 @@ export async function LogedInButton() {
         );
     }
     return (
-        <Link href={"/signin"}>
+        <Link href={"/auth/signin"}>
             <Button className="bg-gray-200 text-gray-900 hover:bg-gray-300 hover:text-gray-800">
                 Sign in
             </Button>

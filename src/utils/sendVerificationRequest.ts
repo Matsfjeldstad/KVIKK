@@ -1,11 +1,12 @@
 import { resend } from "@/lib/resend";
 import MagicLinkEmail from "../../emails/MagicLinkEmail";
+import { SendVerificationRequestParams } from 'next-auth/providers/email';
 import { Interface } from "readline";
 
-interface SendVerificationRequestParams {
-    identifier: string;
-    url: string;
-}
+// interface SendVerificationRequestParams {
+//     identifier: string;
+//     url: string;
+// }
 
 type TextParams = {
     url: string;
@@ -17,14 +18,13 @@ export async function sendVerificationRequest(params: SendVerificationRequestPar
     const { host } = new URL(url);
 
     try {
-        const data = await resend.emails.send({
-            from: "KVIKK <onboarding@resend.dev>",
-            to: [identifier],
+        await resend.emails.send({
+            from: "KVIKK <onboarding@mail.kvikkmail.com>",
+            to: identifier,
             subject: `Log in to KVIKK ${host}`,
             text: text({ url, host }),
             react: MagicLinkEmail({ url, host }),
         });
-        return { success: true, data };
     } catch (error) {
         throw new Error("Failed to send the verification Email.");
     }

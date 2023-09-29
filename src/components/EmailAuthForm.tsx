@@ -13,12 +13,8 @@ type Props = {
 function SigninButton({ type }: Props) {
     return (
         <Button
+            type="submit"
             className="bg-gray-100 flex items-center gap-2 text-gray-800 hover:bg-gray-50 border border-gray-400 hover:border-gray-500"
-            onClick={() => {
-                signIn("email", {
-                    callbackUrl: "http://localhost:3000/",
-                });
-            }}
         >
             <MailIcon className="h-6 w-6" />
             {type === "signin" && "Sign in with Email"}
