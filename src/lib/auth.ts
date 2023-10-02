@@ -33,12 +33,6 @@ export const authConfig: NextAuthOptions = {
         verifyRequest: "/verify-request",
         newUser: "/new-user",
         signIn: "/signin",
-        
     },
-    // secret: process.env.NEXTAUTH_SECRET,
-    callbacks: {
-        async session({ session, token }) {
-            return session;
-        },
-    },
+    secret: process.env.NEXTAUTH_SECRET,
 };

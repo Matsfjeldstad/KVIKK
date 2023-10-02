@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { signIn, signOut } from "next-auth/react";
 import { GithubIcon, GoogleIcon } from "@/assets/Logo";
+import { cn } from "@/lib/utils";
 
 type Props = {
     type: "signin" | "signup";
@@ -47,5 +48,16 @@ export function SignOutButton({}: Props) {
         <Button onClick={handleClick} variant={"destructive"}>
             Sign in with Github
         </Button>
+    );
+}
+
+export function SignOutLink({ className }: { className: string }) {
+    const handleClick = () => {
+        signOut();
+    };
+    return (
+        <div onClick={handleClick} className={cn(className)}>
+            sign out
+        </div>
     );
 }
