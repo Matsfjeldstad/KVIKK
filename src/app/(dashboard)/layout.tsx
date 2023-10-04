@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }: Props) {
         >
             <DashboardNav />
             <main className="w-full">
-                <div className="p-5 hidden border-b max-h-16 md:flex gap-4 justify-end sticky border-stone-800">
+                <div className="p-5 hidden border-b max-h-16 md:flex gap-4 justify-end sticky z-50 bg-[#171718] border-stone-800">
                     <Link href={"/dashboard"} className="underline">
                         {" "}
                         Feed back

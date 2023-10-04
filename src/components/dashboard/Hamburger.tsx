@@ -31,7 +31,7 @@ export default function Hamburger({ children }: Props) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isOpen ? 1 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex flex-col gap-2 h-[calc(100vh-80px)] fixed top-20 left-0 w-full bg-[#171718] p-6"
+                className="flex flex-col gap-2 h-[calc(100vh-80px)] fixed top-20 left-0 w-full bg-[#171718] p-6 z-[199]"
             >
                 {children}
             </motion.nav>

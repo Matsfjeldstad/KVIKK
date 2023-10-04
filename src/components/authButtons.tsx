@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { signIn, signOut } from "next-auth/react";
 import { GithubIcon, GoogleIcon } from "@/assets/Logo";
 import { cn } from "@/lib/utils";
+import { LogOut } from "lucide-react";
 
 type Props = {
     type: "signin" | "signup";
@@ -57,6 +58,7 @@ export function SignOutLink({ className }: { className: string }) {
     };
     return (
         <div onClick={handleClick} className={cn(className)}>
+            <LogOut className="h-4 w-4" />
             sign out
         </div>
     );
