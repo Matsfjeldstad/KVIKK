@@ -4,7 +4,7 @@ import React from "react";
 
 type Props = {};
 
-export default function loading({}: Props) {
+export default function Loading({}: Props) {
     return (
         <div className="p-10">
             <div className="flex justify-between">

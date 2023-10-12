@@ -18,6 +18,7 @@ import {
     DropdownMenuItem,
     DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
+import { DialogClose } from "@radix-ui/react-dialog";
 import { Delete, Edit, MoreHorizontal, Trash } from "lucide-react";
 import React from "react";
 
@@ -104,6 +105,11 @@ export default function EditButton({}: Props) {
                                     permanently delete your account and remove
                                     your data from our servers.
                                 </DialogDescription>
+                                <DialogClose  asChild>
+                                    <Button variant={"destructive"}>
+                                        Delete
+                                    </Button>
+                                </DialogClose>
                             </DialogHeader>
                         </DialogContent>
                     </Dialog>
