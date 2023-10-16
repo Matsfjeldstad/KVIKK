@@ -56,7 +56,7 @@ export default function page({ params }: { params: { id: string } }) {
                         </div>
                     </div>
                 </div>
-                <EditButton />
+                <EditButton id={email?.id!} />
             </div>
             <div className="p-10 w-full flex justify-center items-center bg-gradient-to-r rounded-3xl border mt-20 border-gray-200/20 from-transparent to-[#262626]">
                 <div className=" flex flex-col gap-4 whitespace-pre-line max-w-xl p-10 bg-gray-950 rounded-xl">
