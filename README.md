@@ -56,10 +56,8 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## Road Map
 
-- Add PostgreSQL Database for storrage
-- Add Authentication Using Next-auth.js
-- Add Email Inbox and Draft
-- Make Apealing Landing Page
+- Add Email Draft Page
+- Make Apealing Public Fronting Pages
 
 ## License
 
@@ -72,6 +70,8 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vercel](https://vercel.com/)
 - [Shadcn/UI](https://ui.shadcn.com/)
+- [Prisma]("https://www.prisma.io/")
+- [tRPC]("https://trpc.io/")
 
 ---
 
