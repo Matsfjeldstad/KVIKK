@@ -70,8 +70,8 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vercel](https://vercel.com/)
 - [Shadcn/UI](https://ui.shadcn.com/)
-- [Prisma]("https://www.prisma.io/")
-- [tRPC]("https://trpc.io/")
+- [Prisma](https://www.prisma.io/)
+- [tRPC](https://trpc.io/)
 
 ---
 
