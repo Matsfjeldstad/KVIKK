@@ -6,9 +6,12 @@ import Loading from "./loading";
 
 type Props = {};
 
-export default async function page({ params }: { params: { id: string } }) {
+export default function page({ params }: { params: { id: string } }) {
+    const { id } = params;
     // const email = await res.json();
-    const { data: email, isLoading } = await trpc.getEmail.useQuery();
+    const { data: email, isLoading } =  trpc.getEmail.useQuery({
+        id: Number(id),
+    });
 
     if (isLoading) {
         return <Loading />;

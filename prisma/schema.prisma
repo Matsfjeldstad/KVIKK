@@ -65,6 +65,7 @@ model Emails {
   draft Boolean @default(true)
   email_text String
   subject String
+  status Status @default(draft)
   created_at DateTime @default(now())
   last_edited DateTime @default(now())
 }
@@ -74,6 +75,11 @@ enum Length {
   medium
   long
   extra_long
+}
+
+enum Status {
+  draft
+  sent
 }
 
 model VerificationToken {

@@ -1,12 +1,12 @@
 "use client";
 
+import { trpc } from "@/app/_trpc/client";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
-    DialogOverlay,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
@@ -18,48 +18,51 @@ import {
     DropdownMenuItem,
     DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { Delete, Edit, MoreHorizontal, Trash } from "lucide-react";
-import React from "react";
+import { toast } from "sonner";
+import { MoreHorizontal, Trash } from "lucide-react";
+import React, { useState } from "react";
 
-type Props = {};
+export function DeleteButton({
+    id,
+    setIsOpen,
+}: {
+    id: number;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+    const utils = trpc.useContext();
+    const deleteMutation = trpc.deleteEmail.useMutation({
+        onSuccess: () => {
+            toast.success(`Email with id ${id} deleted!`);
+            utils.getAllEmailDrafts.invalidate();
+            setIsOpen(false);
+        },
+        onError: () => {
+            toast.error("Error delteing email...");
+        },
+    });
+    const handleDelete = () => {
+        deleteMutation.mutate({ id });
+    };
+    return (
+        <Button
+            variant={"destructive"}
+            onClick={handleDelete}
+            className="gap-2 items-center"
+        >
+            <Trash className="h-4 w-4" />
+            {deleteMutation.isLoading ? "Deleting..." : "Delete"}
+        </Button>
+    );
+}
 
-export default function EditButton({}: Props) {
+type Props = {
+    id: number;
+};
+
+export default function EditButton({ id }: Props) {
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            {/* <Dialog>
-                <DropdownMenu>
-                    <DropdownMenuTrigger className="h-fit px-2 py-1 rounded-md border-gray-500 border hover:bg-white/[0.05]">
-                        <MoreHorizontal />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                        align="end"
-                        className="p-4 gap-4 flex flex-col bg-[#262626] text-gray-200 rounded-xl"
-                    >
-                        <DropdownMenuItem className="flex gap-2 items-center">
-                            <Edit className="h-4 w-4" />
-                            Edit
-                        </DropdownMenuItem>
-                        <DialogTrigger asChild>
-                            <DropdownMenuItem
-                                onSelect={(e) => e.preventDefault()}
-                                className="flex gap-2 items-center"
-                            >
-                                <Trash className="h-4 w-4 stroke-red-500" />
-                                Delete
-                            </DropdownMenuItem>
-                        </DialogTrigger>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-                <DialogContent className="bg-black">
-                    <DialogTitle>Are you sure absolutely sure?</DialogTitle>
-                    <DialogDescription>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
-                    </DialogDescription>
-                </DialogContent>
-            </Dialog> */}
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="h-8 w-8 p-0">
@@ -87,10 +90,12 @@ export default function EditButton({}: Props) {
                         </DialogContent>
                     </Dialog>
                     <DropdownMenuSeparator />
-                    <Dialog>
+                    <Dialog open={isOpen} onOpenChange={setIsOpen}>
                         <DialogTrigger>
                             <DropdownMenuItem
-                                onSelect={(e) => e.preventDefault()}
+                                onSelect={(e) => {
+                                    e.preventDefault();
+                                }}
                             >
                                 Delete item
                             </DropdownMenuItem>
@@ -105,11 +110,8 @@ export default function EditButton({}: Props) {
                                     permanently delete your account and remove
                                     your data from our servers.
                                 </DialogDescription>
-                                <DialogClose  asChild>
-                                    <Button variant={"destructive"}>
-                                        Delete
-                                    </Button>
-                                </DialogClose>
+
+                                <DeleteButton id={id} setIsOpen={setIsOpen} />
                             </DialogHeader>
                         </DialogContent>
                     </Dialog>
