@@ -33,7 +33,7 @@ export function DeleteButton({
     const deleteMutation = trpc.deleteEmail.useMutation({
         onSuccess: () => {
             toast.success(`Email with id ${id} deleted!`);
-            utils.getAllEmailDrafts.invalidate();
+            utils.getAllEmailDraftsInfinite.invalidate();
             setIsOpen(false);
         },
         onError: () => {
