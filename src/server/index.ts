@@ -1,6 +1,7 @@
 import db from "@/lib/db";
 import { protectedProcedure, router } from "./trpc";
 import { z } from "zod";
+import { userRoute } from "./routes/user";
 
 export const appRouter = router({
     getAllEmailDraftsInfinite: protectedProcedure
@@ -84,14 +85,7 @@ export const appRouter = router({
             return email;
         }),
 
-    me: protectedProcedure.query(async ({ ctx }) => {
-        const user = await db.user.findUnique({
-            where: {
-                id: ctx.session.user.id,
-            },
-        });
-        return user;
-    }),
+    user: userRoute,
 });
 
 export type AppRouter = typeof appRouter;
