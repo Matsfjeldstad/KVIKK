@@ -23,7 +23,13 @@ import { Button } from "../ui/button";
 
 type Props = {};
 
-const links = [
+export type Link = {
+    name: string;
+    href: string;
+    icon: any;
+}
+
+export const links : Link[] = [
     {
         name: "Overview",
         href: "/",
@@ -50,6 +56,8 @@ const links = [
         icon: Settings,
     },
 ];
+
+
 
 export default async function DashboardNav({}: Props) {
     const session = await getServerSession(authConfig);
@@ -90,23 +98,7 @@ export default async function DashboardNav({}: Props) {
                     <MoreHorizontal />
                 </DropDown>
             </div>
-            <Hamburger>
-                {links.map((link, index) => (
-                    <>
-                        <Link
-                            href={link.href}
-                            key={link.name}
-                            className="p-2 flex items-center gap-2 rounded cursor-pointer hover:bg-stone-900"
-                        >
-                            <link.icon className="w-4 h-4" />
-                            {link.name}
-                        </Link>
-
-                        <Separator key={index} className="bg-stone-700" />
-                    </>
-                ))}
-                <SignOutLink className="p-2 flex items-center gap-2 rounded cursor-pointer hover:bg-stone-900" />
-            </Hamburger>
+            <Hamburger />
         </header>
     );
 }

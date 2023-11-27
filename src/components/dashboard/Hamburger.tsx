@@ -1,12 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { links } from "./DashboardNav";
+import { SignOutLink } from "../authButtons";
+import { Separator } from "../ui/separator";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-type Props = {
-    children: React.ReactNode;
-};
-
-export default function Hamburger({ children }: Props) {
+export default function Hamburger() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div
@@ -31,9 +32,23 @@ export default function Hamburger({ children }: Props) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isOpen ? 1 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex flex-col gap-2 h-[calc(100vh-80px)] fixed top-20 left-0 w-full bg-[#171718] p-6 z-[199]"
+                className={cn("flex flex-col gap-2 h-[calc(100vh-80px)] fixed top-20 left-0 w-full bg-[#171718] p-6 z-[199]", isOpen ? "flex" : "hidden")}
             >
-                {children}
+                {links.map((link, index) => (
+                    <div key={index}>
+                        <Link
+                            href={link.href}
+                            key={link.name}
+                            className="p-2 flex items-center gap-2 rounded cursor-pointer hover:bg-stone-900"
+                        >
+                            <link.icon className="w-4 h-4" />
+                            {link.name}
+                        </Link>
+
+                        <Separator key={index} className="bg-stone-700" />
+                    </div>
+                ))}
+                <SignOutLink className="p-2 flex items-center gap-2 rounded cursor-pointer hover:bg-stone-900" />
             </motion.nav>
         </div>
     );

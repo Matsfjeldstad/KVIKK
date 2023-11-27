@@ -56,11 +56,30 @@ model Emails {
   id    Int     @id @default(autoincrement())
   author User?  @relation(fields: [author_id], references: [id])
   author_id  String
-  draft Boolean
+  mood String
+  type String
+  to String
+  from String
+  context String
+  length Length @default(medium)
+  draft Boolean @default(true)
   email_text String
   subject String
+  status Status @default(draft)
   created_at DateTime @default(now())
   last_edited DateTime @default(now())
+}
+
+enum Length {
+  short
+  medium
+  long
+  extra_long
+}
+
+enum Status {
+  draft
+  sent
 }
 
 model VerificationToken {

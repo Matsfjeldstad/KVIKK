@@ -1,9 +1,6 @@
-import { KvikkLogo } from "@/assets/Logo";
-import DropDown from "@/components/AuthDropdown";
 import DashboardNav from "@/components/dashboard/DashboardNav";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
-import { Home, Mail, MoreHorizontal, Receipt, Settings } from "lucide-react";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
@@ -42,6 +39,7 @@ export default function DashboardLayout({ children }: Props) {
                     </Link>
                 </div>
                 <div className="  h-[calc(100vh-80px)] md:h-[calc(100vh-64px)] overflow-y-scroll overflow-x-hidden">
+                    <Toaster richColors />
                     {children}
                 </div>
             </main>

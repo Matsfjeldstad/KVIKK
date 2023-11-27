@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Provider from "./_trpc/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={cn(inter.className, "bg-[#010821] text-gray-200")}>
-                {children}
+                <Provider>{children}</Provider>
             </body>
         </html>
     );
