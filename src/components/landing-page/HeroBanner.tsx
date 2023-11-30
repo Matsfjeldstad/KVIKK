@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import heroGif from "@/assets/animations/wavyHero.webp";
 import { AiMail } from "@/assets/Icons";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 
 type Props = {};
 
@@ -90,6 +91,7 @@ export default function HeroBanner({}: Props) {
                     The AI-powered email response generator that makes your life
                     easier.
                 </motion.p>
+                <Link href={"/dashboard"}>
                 <motion.button
                     initial={{
                         opacity: 0,
@@ -104,8 +106,9 @@ export default function HeroBanner({}: Props) {
                     }}
                     className="px-4 py-2 rounded-lg font-medium bg-white text-gray-800"
                 >
-                    Go to app
+                    Get Started
                 </motion.button>
+                </Link>
             </motion.div>
         </section>
     );

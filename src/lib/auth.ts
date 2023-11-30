@@ -26,7 +26,7 @@ export const authConfig: NextAuthOptions = {
             name: "Email",
             options: {},
             server: "",
-            from: "",
+            from: "onboarding@kvikkmail.com",
             maxAge: 60 * 60 * 24 * 7,
             sendVerificationRequest,
         },

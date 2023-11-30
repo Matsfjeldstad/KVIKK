@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { authConfig } from "@/lib/auth";
 import Home from "./(public_facing)/home/page";
+import Footer from "@/components/Footer";
 
 type Props = {};
 
@@ -17,6 +18,7 @@ export default async function page({}: Props) {
         <>
             <Navbar />
             <Home />
+            <Footer />
         </>
     );
 }
