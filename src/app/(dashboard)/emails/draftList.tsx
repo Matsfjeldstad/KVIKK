@@ -131,7 +131,7 @@ export default function DraftList({}: Props) {
 
     return (
         <div className="flex flex-col gap-5 mt-10">
-            <div>
+            <div ref={parent}>
                 {emails?.map((email, i) => (
                     <div
                         ref={i === emails.length - 1 ? ref : null}

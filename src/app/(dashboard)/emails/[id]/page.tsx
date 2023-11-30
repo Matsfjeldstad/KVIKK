@@ -3,18 +3,28 @@ import React from "react";
 import EditButton from "./edit-button";
 import { trpc } from "@/app/_trpc/client";
 import Loading from "./loading";
+import EmailError from "./error";
 
 type Props = {};
 
 export default function page({ params }: { params: { id: string } }) {
     const { id } = params;
     // const email = await res.json();
-    const { data: email, isLoading } =  trpc.getEmail.useQuery({
+    const {
+        data: email,
+        isLoading,
+        isError,
+        error,
+    } = trpc.getEmail.useQuery({
         id: Number(id),
     });
 
     if (isLoading) {
         return <Loading />;
+    }
+
+    if (isError || !email) {
+        return <EmailError />;
     }
 
     return (

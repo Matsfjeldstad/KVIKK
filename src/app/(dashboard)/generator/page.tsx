@@ -25,7 +25,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-export default function Home() {
+export default function GeneratorPage() {
     const [isResponse, setIsResponse] = useState(false);
     const [name, setName] = useState("");
     const [context, setContext] = useState("");

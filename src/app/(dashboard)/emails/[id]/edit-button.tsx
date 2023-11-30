@@ -21,20 +21,27 @@ import {
 import { toast } from "sonner";
 import { MoreHorizontal, Trash } from "lucide-react";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function DeleteButton({
     id,
     setIsOpen,
+    isOpen,
 }: {
     id: number;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    isOpen: boolean;
 }) {
+    const router = useRouter();
     const utils = trpc.useContext();
     const deleteMutation = trpc.deleteEmail.useMutation({
         onSuccess: () => {
             toast.success(`Email with id ${id} deleted!`);
             utils.getAllEmailDraftsInfinite.invalidate();
             setIsOpen(false);
+            setTimeout(() => {
+                router.push("/emails");
+            }, 1000);
         },
         onError: () => {
             toast.error("Error delteing email...");
@@ -111,7 +118,11 @@ export default function EditButton({ id }: Props) {
                                     your data from our servers.
                                 </DialogDescription>
 
-                                <DeleteButton id={id} setIsOpen={setIsOpen} />
+                                <DeleteButton
+                                    id={id}
+                                    setIsOpen={setIsOpen}
+                                    isOpen={isOpen}
+                                />
                             </DialogHeader>
                         </DialogContent>
                     </Dialog>
