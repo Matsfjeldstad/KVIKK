@@ -16,7 +16,7 @@ async function serverUserData() {
     return userData.user;
 }
 
-export default async function page() {
+export default async function AccountPage() {
     const data = await serverUserData();
 
     if(!data) {
