@@ -16,7 +16,6 @@ export default function Navbar({}: Props) {
                     <Link href={"/"}>Home</Link>
                     <Link href={"/about"}>What is Kvikk</Link>
                     <Link href={"/pricing"}>Pricing</Link>
-                    <Link href={"/faq"}>FAQ</Link>
                 </div>
                 <LogedInButton />
             </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { Children } from "react";
+import Link from "next/link";
 import {
     DropdownMenu,
     DropdownMenuTrigger,
@@ -7,7 +8,7 @@ import {
     DropdownMenuItem,
 } from "./ui/dropdown-menu";
 import { signOut } from "next-auth/react";
-import { Link, LogOut, Receipt, UserCircle2 } from "lucide-react";
+import { Link as LinkIcon, LogOut, Receipt, Settings, UserCircle2 } from "lucide-react";
 
 type Props = {
     children: React.ReactNode;
@@ -20,17 +21,23 @@ export default function DropDown({ children }: Props) {
                 {children}
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-stone-900 text-gray-200 border-stone-600 min-w-[200px]">
-                <DropdownMenuItem className="flex gap-2 items-center">
-                    <UserCircle2 className="w-4 h-4" />
-                    Profile
-                </DropdownMenuItem>
-                <DropdownMenuItem className="flex gap-2 items-center">
-                    <Link className="w-4 h-4" />
-                    Homepage
-                </DropdownMenuItem>
-                <DropdownMenuItem className="flex gap-2 items-center">
-                    <Receipt className="w-4 h-4" /> Billing
-                </DropdownMenuItem>
+                <Link href="/dashboard">
+                    <DropdownMenuItem className="flex gap-2 items-center">
+                        <UserCircle2 className="w-4 h-4" />
+                        Dashboard
+                    </DropdownMenuItem>
+                </Link>
+                <Link href={"/home"}>
+                    <DropdownMenuItem className="flex gap-2 items-center">
+                        <LinkIcon className="w-4 h-4" />
+                        Homepage
+                    </DropdownMenuItem>
+                </Link>
+                <Link href={"/settings/account"}>
+                    <DropdownMenuItem className="flex gap-2 items-center">
+                        <Settings className="w-4 h-4" /> Settings
+                    </DropdownMenuItem>
+                </Link>
                 <DropdownMenuItem
                     onClick={() => signOut()}
                     className="flex gap-2 items-center"

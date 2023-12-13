@@ -22,7 +22,7 @@ export async function sendVerificationRequest(params: SendVerificationRequestPar
 
     try {
         await resend.emails.send({
-            from: "KVIKK Login <onboarding@mail.kvikkmail.com>",
+            from: "KVIKK Login <onboarding@kvikkmail.com>",
             to: identifier,
             subject: `Log in to KVIKK ${host}`,
             text: text({ url, host }),

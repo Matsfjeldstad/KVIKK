@@ -1,11 +1,8 @@
 "use client";
 import React from "react";
 import UpdateButton from "./UpdateButton";
-import db from "@/lib/db";
 import { serverAction } from "../account/actions/serverFormAction";
 import { toast } from "sonner";
-import { trpc } from "@/app/_trpc/client";
-import { api } from "@/app/_trpc/server";
 
 type Props = {
     data: {
