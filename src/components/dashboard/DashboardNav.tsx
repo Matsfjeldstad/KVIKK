@@ -42,7 +42,7 @@ export const links : Link[] = [
     },
     {
         name: "Pricing",
-        href: "/pricing",
+        href: "/billing",
         icon: Receipt,
     },
     {
