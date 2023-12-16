@@ -7,8 +7,9 @@ type Props = {};
 
 export default function BillingPage({}: Props) {
     return (
-        <div className="p-10">
-            <div className="max-w-5xl mx-auto flex flex-col gap-8">
+        <div className="p-10 relative">
+            <div className="w-full h-full absolute top-0 left-0 opacity-5 pointer-events-none bg-[radial-gradient(at_top_left,_#F8F8F8_0%,_transparent_80%)] z-0" />
+            <div className="max-w-5xl mx-auto flex flex-col gap-8 relative">
                 <h1 className="font-bold text-3xl">Billing</h1>
                 <div className="flex gap-4">
                     <div className="p-6 border flex flex-col gap-6 border-gray-700 w-full rounded-2xl">

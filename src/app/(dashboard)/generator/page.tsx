@@ -75,7 +75,7 @@ export default function GeneratorPage() {
             <div
                 className={cn(
                     completion ? "opacity-50" : "opacity-20",
-                    "pointer-events-none duration-200 fixed inset-0 z-0 h-full w-screen bg-[radial-gradient(circle_at_left,_#B12E82_10%,_transparent_70%)] "
+                    "pointer-events-none duration-200 fixed inset-0 z-0 h-full w-screen bg-[radial-gradient(at_top_left,_#C738DE_0%,_transparent_80%)] "
                 )}
             />
             <div className="flex flex-col md:flex-row gap-10 md:gap-20 max-w-7xl mx-auto">
