@@ -2,8 +2,6 @@ import { authConfig } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { DropdownMenu } from "./ui/dropdown-menu";
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import DropDown from "./AuthDropdown";
 import Link from "next/link";
 
