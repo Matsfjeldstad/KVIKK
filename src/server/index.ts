@@ -2,6 +2,7 @@ import db from "@/lib/db";
 import { protectedProcedure, router } from "./trpc";
 import { z } from "zod";
 import { userRoute } from "./routes/user";
+import { resendRoute } from "./routes/resend";
 
 export const appRouter = router({
     getAllEmailDraftsInfinite: protectedProcedure
@@ -86,6 +87,7 @@ export const appRouter = router({
         }),
 
     user: userRoute,
+    resend: resendRoute,
 });
 
 export type AppRouter = typeof appRouter;

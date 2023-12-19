@@ -146,7 +146,7 @@ export default function DraftList({}: Props) {
                             >
                                 subject: {email.subject}
                             </Link>
-                            <EditButton id={email.id} />
+                            <EditButton text={email.email_text} to={email.to} from={email.from} subject={email.subject} id={email.id} />
                         </div>
                         {/* <Separator className="bg-gray-600" /> */}
                     </div>
