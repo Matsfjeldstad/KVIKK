@@ -4,8 +4,10 @@ import EditButton from "./edit-button";
 import { trpc } from "@/app/_trpc/client";
 import Loading from "./loading";
 import EmailError from "./error";
+import { formatEmailText } from "@/lib/utils";
 
 type Props = {};
+
 
 export default function page({ params }: { params: { id: string } }) {
     const { id } = params;
@@ -66,11 +68,17 @@ export default function page({ params }: { params: { id: string } }) {
                         </div>
                     </div>
                 </div>
-                <EditButton id={email?.id!} />
+                <EditButton
+                    id={email?.id!}
+                    text={email?.email_text}
+                    to={email?.to}
+                    subject={email?.subject}
+                    from={email?.from}
+                />
             </div>
             <div className="p-10 w-full flex justify-center items-center bg-gradient-to-r rounded-3xl border mt-20 border-gray-200/20 from-transparent to-[#262626]">
-                <div className=" flex flex-col gap-4 whitespace-pre-line max-w-xl p-10 bg-gray-950 rounded-xl">
-                    {email?.email_text}
+                <div className=" flex flex-col gap-4 whitespace-pre-line  max-w-xl p-10 bg-gray-950 rounded-xl">
+                    {formatEmailText(email?.email_text)}
                 </div>
             </div>
         </div>

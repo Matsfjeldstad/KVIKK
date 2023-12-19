@@ -22,6 +22,7 @@ import { toast } from "sonner";
 import { MoreHorizontal, Trash } from "lucide-react";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { formatEmailText } from "@/lib/utils";
 
 export function DeleteButton({
     id,
@@ -64,10 +65,23 @@ export function DeleteButton({
 
 type Props = {
     id: number;
+    text: string;
+    to: string;
+    from: string;
+    subject: string;
 };
 
-export default function EditButton({ id }: Props) {
+export default function EditButton({ id, text, to, subject, from }: Props) {
     const [isOpen, setIsOpen] = useState(false);
+
+    const { mutate: sendEmail, isLoading} = trpc.resend.sendDraft.useMutation({
+        onSuccess: () => {
+            toast.success("Email sent!");
+        },
+        onError: () => {
+            toast.error("Error sending email...");
+        },
+    });
     return (
         <>
             <DropdownMenu>
@@ -97,6 +111,48 @@ export default function EditButton({ id }: Props) {
                         </DialogContent>
                     </Dialog>
                     <DropdownMenuSeparator />
+                    <Dialog>
+                        <DialogTrigger>
+                            <DropdownMenuItem
+                                onSelect={(e) => {
+                                    e.preventDefault();
+                                }}
+                            >
+                                send email
+                            </DropdownMenuItem>
+                        </DialogTrigger>
+                        <DialogContent className="bg-black max-w-2xl">
+                            <DialogHeader>
+                                <DialogTitle>
+                                    Email ready to be sent:
+                                </DialogTitle>
+                            </DialogHeader>
+                            <DialogDescription className="whitespace-pre-line p-6 gap-4 flex flex-col bg-gray-900 text-gray-300 rounded-md">
+                                <div className="p-2 bg-gray-700 rounded-md">
+                                    To: {to}
+                                </div>
+                                <div className="font-bold">
+                                    Subject: {subject}
+                                </div>
+                                <div>{formatEmailText(text)}</div>
+                            </DialogDescription>
+                            <Button
+                                variant={"outline"}
+                                className="text-gray-900 hover:text-gray-700"
+                                onClick={() =>
+                                    sendEmail({
+                                        text: text,
+                                        from: from,
+                                        to: to,
+                                        subject: subject,
+                                    })
+                                }
+                            >
+                                {isLoading ? "Sending..." : "Send"}
+                            </Button>
+                        </DialogContent>
+                    </Dialog>
+                    <DropdownMenuSeparator />
                     <Dialog open={isOpen} onOpenChange={setIsOpen}>
                         <DialogTrigger>
                             <DropdownMenuItem
@@ -117,13 +173,12 @@ export default function EditButton({ id }: Props) {
                                     permanently delete your account and remove
                                     your data from our servers.
                                 </DialogDescription>
-
-                                <DeleteButton
-                                    id={id}
-                                    setIsOpen={setIsOpen}
-                                    isOpen={isOpen}
-                                />
                             </DialogHeader>
+                            <DeleteButton
+                                id={id}
+                                setIsOpen={setIsOpen}
+                                isOpen={isOpen}
+                            />
                         </DialogContent>
                     </Dialog>
                 </DropdownMenuContent>
